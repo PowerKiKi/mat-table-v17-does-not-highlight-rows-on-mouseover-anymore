@@ -1,0 +1,33 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "strictNullChecks": true,
+        "target": "ES2022",
+        "module": "ES2022",
+        "lib": ["ES2022", "dom"],
+        "allowSyntheticDefaultImports": true,
+        "noImplicitOverride": true,
+        "useDefineForClassFields": false
+    },
+    "angularCompilerOptions": {
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true,
+        // Remove this when https://github.com/angular/angular/issues/37619 is fixed
+        "strictSafeNavigationTypes": false
+    },
+    // Otherwise, eslint parses our temp files and crashes, see https://github.com/typescript-eslint/typescript-eslint/issues/1192
+    "exclude": ["data/", "htdocs/"]
+}

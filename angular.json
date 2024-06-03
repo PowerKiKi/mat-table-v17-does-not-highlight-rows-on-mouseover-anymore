@@ -1,0 +1,106 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "my-app": {
+            "root": "",
+            "sourceRoot": "client",
+            "projectType": "application",
+            "prefix": "app",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                },
+                "@schematics/angular:application": {
+                    "strict": true
+                }
+            },
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "preserveSymlinks": true,
+                        "outputPath": "data/tmp/build",
+                        "index": "client/index.html",
+                        "main": "client/main.ts",
+                        "polyfills": "client/polyfills.ts",
+                        "tsConfig": "client/tsconfig.app.json",
+                        "assets": [
+                            "client/assets",
+                            {
+                                "input": "client/favicon",
+                                "glob": "*",
+                                "output": "/"
+                            },
+                            {
+                                "input": "server/",
+                                "glob": "index.php",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": ["client/styles.scss"],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "outputHashing": "all",
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ]
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "ssl": true,
+                        "sslCert": "/sites/self-signed-certificate.crt",
+                        "sslKey": "/sites/self-signed-certificate.key",
+                        "port": 4301,
+                        "host": "localhost"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "my-app:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "my-app:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+            }
+        }
+    },
+    "cli": {
+        "schematicCollections": ["@angular-eslint/schematics"],
+        "packageManager": "yarn",
+        "analytics": false
+    },
+    "schematics": {
+        "@angular-eslint/schematics:application": {
+            "setParserOptionsProject": true
+        },
+        "@angular-eslint/schematics:library": {
+            "setParserOptionsProject": true
+        }
+    }
+}
