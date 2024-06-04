@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
 
 // Configure themes
-$my-blue: mat.define-palette(mat.$indigo-palette);
-$my-orange: mat.define-palette(mat.$orange-palette);
-$my-red: mat.define-palette(mat.$red-palette);
+$my-blue: mat.m2-define-palette(mat.$m2-indigo-palette);
+$my-orange: mat.m2-define-palette(mat.$m2-orange-palette);
+$my-red: mat.m2-define-palette(mat.$m2-red-palette);
 
-$my-theme: mat.define-light-theme(
+$my-theme: mat.m2-define-light-theme(
                 (
                         color: (
                                 primary: $my-blue,
