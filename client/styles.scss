@@ -16,7 +16,4 @@ $my-theme: mat.define-light-theme(
 );
 
 @include mat.core();
-
-body {
-    @include mat.table-color($my-theme);
-}
+@include mat.table-theme($my-theme);
